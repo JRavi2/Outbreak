@@ -29,7 +29,7 @@ def signup_p(request):
             patient = patientForm.save(commit=False)
             patient.user = userF
             patient.save()
-            redirect("home")
+            return redirect("home")
     else:
         userForm = UserForm()
         patientForm = PatientForm()
@@ -44,7 +44,7 @@ def signup_h(request):
     if request.POST:
         userForm = UserForm(request.POST)
         hospitalForm = HospitalForm(request.POST)
-
+        print(userForm.is_valid(), hospitalForm.is_valid())
         if userForm.is_valid() and hospitalForm.is_valid():
             # Save User
             user = userForm.save(commit=False)
@@ -55,23 +55,30 @@ def signup_h(request):
             # Save Hospital
             hospital = hospitalForm.save(commit=False)
             hospital.user = user
+            # Should use the Geocoding API to get the coordinates
             hospital.latitude = 28.6446
             hospital.longitude = 77.3655
             hospital.save()
             if hospital.hasTokenSystem == False:
                 for spec in hospital.specialities:
                     Token.objects.create(user=user, department=spec, count=0)
-            redirect("home")
+            return redirect("home")
     else:
         userForm = UserForm()
         hospitalForm = HospitalForm()
     return render(
         request,
-        "accounts/hospital/signup.html",
+        "accounts/hospital/signUp.html",
         {"userForm": userForm, "hospitalForm": hospitalForm},
     )
     pass
 
+@login_required
+def goto_dashboard(request):
+    if request.user.user_type == "P":
+        return redirect('patient_dashboard')
+    else:
+        return redirect('hospital_dashboard')
 
 @login_required
 def patient_dashboard(request):
