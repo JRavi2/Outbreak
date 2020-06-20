@@ -26,39 +26,37 @@ def calc_dist(lat, long, destinations):
 
 
 def find_place(lati, longi, l):
-    # l=['pharmacy','primary+health+care+center','goverment+hospitals']
-
     result = []
     for j in l:
         print(j)
         url = (
-            "https://maps.googleapis.com/maps/api/place/textsearch/json?query="
+            "https://api.mapbox.com/geocoding/v5/mapbox.places/"
             + str(j)
-            + "&key=AIzaSyDRJfxExJoo1eMBj6T-pSEqpPO2o8W1Fes&location="
+            + ".json?country=in&proximity="
+            + str(longi)
+            + ","
+            + str(lati)
+            + "&limit=20&access_token=pk.eyJ1Ijoib2xkbW9uayIsImEiOiJja2Jua2o1OHQwN3g4MnBwbm1sZGIzd3MyIn0.5Az8PsHtt4Gp6SlanOUv6Q"
         )
-        url += str(lati) + "," + str(longi)
         response = requests.get(url)
         data = response.json()
         destinations = []
-        print(data)
-        for i in range(20):
-            lat = data["results"][i]["geometry"]["location"]["lat"]
-            lng = data["results"][i]["geometry"]["location"]["lng"]
+        for i in range(len(data["features"])):
+            lat = data["features"][i]["geometry"]["coordinates"][1]
+            lng = data["features"][i]["geometry"]["coordinates"][0]
             destinations.append({"point": {"latitude": lat, "longitude": lng}})
         res = calc_dist(lati, longi, destinations)
-        for i in range(20):
+        for i in range(len(data["features"])):
             result.append(
                 {
-                    "name": data["results"][i]["name"],
-                    "address": data["results"][i]["formatted_address"],
+                    "name": data["features"][i]["text"],
+                    "address": data["features"][i]["place_name"],
                     "distance": res["matrix"][0][i]["response"]["routeSummary"][
                         "lengthInMeters"
                     ]
                     / 1000,
                 }
             )
-        # time.sleep(3)
-    # print(result)
     result.sort(key=operator.itemgetter("distance"))
     return result
 
@@ -76,18 +74,14 @@ def check(disease, lati, longi):
             rows.append(row)
 
     for i in range(0, len(rows), 2):
-        if str(rows[i][0]).lower() == str(disease):
-            # print("correctly found")
-            # print(rows[i][1])
+        if str(disease).lower() in str(rows[i][0]).lower():
             if (
                 (rows[i][1] == "acute")
                 or (rows[i][1] == "acute/chronic")
                 or (rows[i][1] == "chronic/acute")
             ):
-                print("still correct")
-                return find_place(lati, longi, ["clinic"])
+                return find_place(lati, longi, ["pharmacy"])
             else:
-                print("chronic one ")
                 return find_place(lati, longi, ["hospital"])
 
 
