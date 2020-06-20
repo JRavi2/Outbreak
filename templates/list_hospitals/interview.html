@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+<style>form{
+    margin-top: 10%;
+    text-align: center;
+}</style>
+<form method="post">
+    {% csrf_token %}
+    <label for="ans">{{question}}</label>
+    <input type="text" name="ans" />
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

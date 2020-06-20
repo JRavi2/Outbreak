@@ -14,18 +14,7 @@
   - ##### A chatbot to tell you your alinment based on your symptoms.
 
 
-## Resources used :-
-
-> **https://www.nhp.gov.in/**
-> **https://data.gov.in/**
-> **https://www.nlm.nih.gov/**
-> **https://www.nhsinform.scot/**
-
-> **Google Maps API**
-> **TomTom Synchronous Matrix API**
-> **ApiMedic**
-
-### Tech Stack:-
+## Tech Stack:-
 
 Outbreak uses a number of framework to work properly:
 
@@ -37,7 +26,7 @@ Outbreak uses a number of framework to work properly:
 * ##### Sqlite (For preproduction phase)
 
 
-### How to run 
+## How to run 
 
 **Outbreak requires Django v3+ to run.**
 
@@ -48,4 +37,14 @@ $ cd outbreak
 $ python3 manage.py runserver 
 ```
 
+### Resources used :-
+
+- ##### **https://www.nhp.gov.in/**
+- ##### **https://data.gov.in/**
+- ##### **https://www.nlm.nih.gov/**
+- ##### **https://www.nhsinform.scot/**
+
+ - ##### **Google Maps API**
+ - ##### **TomTom Synchronous Matrix API**
+ - ##### **ApiMedic**
 

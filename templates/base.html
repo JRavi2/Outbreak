@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <title>OUTBREAK</title>
+  </head>
+  <!-- <style>
+    body {
+        overflow: hidden;
+    }
+
+    .bg-custom {
+        background-color: #f66767;
+    }
+
+    .part {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        max-height: 50vh;
+        height: 50vh;
+        overflow: hidden; 
+    }
+
+    .part.active {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        height: 100vh;
+        max-height: 100vh;
+    }
+
+    .card {
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    @media(min-width: 992px) {
+        .part {
+            min-height: 100vh;
+            height: 100vh;
+        }
+        
+        .card {
+            margin-top: 5px;
+            margin-left: 5px;
+            margin-right: 0px;
+        }
+    }
+
+    .heading {
+        color: white;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .docform{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        align-content: center;
+        opacity: 0;
+    }
+
+    .dot {
+        height: 12px;
+        width: 12px;
+        background-color: #00ff00;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .dot.active {
+        background-color: #00ff00;
+    }
+
+    .dot.standby {
+        background-color: #ffff00;
+    }
+    </style> -->
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-custom">
+      <a class="navbar-brand" href="#">Outbreak</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          {% if user.is_authenticated %}
+          <li>Hello</li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Sign in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup_p' %}">Patient Sign up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup_h' %}">Hospital Sign up</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    {% block content %} {% endblock %}
+    <script src="{% static 'scripts/index.js' %}"></script>
+  </body>
+</html>

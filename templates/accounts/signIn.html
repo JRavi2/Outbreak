@@ -1,0 +1,122 @@
+	
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <style> 
+        body {
+            margin: 0;
+            padding: 0;
+        }
+#wrapper {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  column-gap: 0px;
+  height: 100%;
+background-color:#f9d5bb;
+}
+
+#up {
+  
+  background-color:#d35656 ;
+}
+fieldset{
+    background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	box-sizing: border-box;
+	width: 60%;
+    margin: 20% 20%;
+    text-align: center;
+}
+fieldset input{
+    padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+fieldset .action-button{
+    width: 100px;
+	background: #d35656;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+.fs-title {
+	font-size: 20px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+#up{
+    text-align: center;
+}
+#up h1{
+    color: white;
+    padding: 70px 20px 0px 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 300%;
+}
+#up p{
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 150%;
+    margin:50px;
+
+}
+
+#up a{
+    text-decoration: none;
+    color:white;
+    padding:10px;
+    border:solid white 1px;
+    border-radius:5px;
+    margin:40%;
+}
+
+#up a:hover{
+    color:#2C3E50;
+    background-color: white;
+}
+fieldset .action-button:hover{
+box-shadow: 0 0 0 2px white, 0 0 0 3px #f9d5bb ;
+}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+    <div id="up"><h1>Welcome User</h1><p>Get started by signing up.<br></p>
+    <div>
+    <a href="{% url 'signup_p' %}">SIGN UP</a></div>
+        
+    </div>
+    <div id="in"><fieldset><h2 class="fs-title">sign in</h2>
+        <form method="post"> {% csrf_token %}
+            <label>User Id</label>
+            {{ form.username }}
+            <!-- <input type="text" name="user_id" placeholder="Username" /> -->
+            <label>Password</label>
+            {{ form.password }}
+            <!-- <input type="password" name="password" placeholder="Password" /> -->
+            <button type="submit">Submit</button>
+            <!-- <input type="submit" name="next" class="next action-button"/> -->
+        </form>
+    </fieldset></div>
+
+</body>
+</html>
+

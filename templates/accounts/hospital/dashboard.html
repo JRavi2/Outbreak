@@ -1,0 +1,7 @@
+{% extends 'base.html' %} {% block content %}
+<a href="{% url 'home' %}">Profile</a>
+<a href="{% url 'update_tokens' %}">Update Tokens</a>
+<p>Name: {{User.name}}</p>
+<p>Address: {{User.address}}</p>
+<p>Bed Capacity: {{User.bed_capacity}}</p>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div>
+    {% for token in tokens %}
+    <h4 class="departments">{{token.department}}</h4>
+    <a href="{% url 'decrease_tokens'  token.department  %}" class="decr-tokens"
+        >-</a
+    ><input type="number" name="count" value="{{ token.count }}" /><a
+        href="{% url 'increase_tokens'   token.department  %}"
+        class="incr-tokens"
+        >+</a
+    >
+    {% endfor %}
+</div>
+<script src="{% static 'scripts/tokens_page.js' %}"></script>
+{% endblock %}

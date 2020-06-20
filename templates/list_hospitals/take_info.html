@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Please enter your Info: </h3>
+<form method="post">
+    {% csrf_token %}
+    <label for="age">Age:</label>
+    <input type="number" name="age">
+    <label for="sex">Sex: </label>
+    <input type="text" name="sex">
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
