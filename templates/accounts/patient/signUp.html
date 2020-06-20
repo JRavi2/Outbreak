@@ -1,0 +1,523 @@
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+    <title>Sign Up</title>
+  </head>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #container {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 55% 45%;
+      column-gap: 0px;
+      border: 10px 10px;
+      padding: 20px 10px;
+    }
+    #second {
+      background-color: #d35656;
+      height: 100%;
+      border: 0 none;
+      border-radius: 3px;
+      box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+      position: static;
+    }
+    #first {
+      height: 100%;
+    }
+
+    html {
+      background: #f9d5bb;
+    }
+
+    body {
+      font-family: montserrat, arial, verdana;
+    }
+
+    #msform {
+      width: 70%;
+      margin: 50px auto;
+      text-align: center;
+      position: relative;
+    }
+    #msform fieldset {
+      background: white;
+      border: 0 none;
+      border-radius: 3px;
+      box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+      padding: 20px 30px;
+      box-sizing: border-box;
+      width: 80%;
+      margin: 0 10%;
+      position: relative;
+    }
+    #msform fieldset:not(:first-of-type) {
+      display: none;
+    }
+    #msform input,
+    #msform textarea {
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      font-family: montserrat;
+      color: #2c3e50;
+      font-size: 13px;
+    }
+    #msform .action-button {
+      width: 100px;
+      background: #d35656;
+      font-weight: bold;
+      color: white;
+      border: 0 none;
+      border-radius: 1px;
+      cursor: pointer;
+      padding: 10px 5px;
+      margin: 10px 5px;
+    }
+    #msform .action-button:hover,
+    #msform .action-button:focus {
+      box-shadow: 0 0 0 2px white, 0 0 0 3px #f9d5bb;
+    }
+    .fs-title {
+      font-size: 15px;
+      text-transform: uppercase;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    .fs-subtitle {
+      font-weight: normal;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    #progressbar {
+      margin-bottom: 30px;
+      overflow: hidden;
+      counter-reset: step;
+    }
+    #progressbar li {
+      list-style-type: none;
+      color: #3c3d47;
+      text-transform: uppercase;
+      font-size: 9px;
+      width: 33.33%;
+      float: left;
+      position: relative;
+    }
+    #progressbar li:before {
+      content: counter(step);
+      counter-increment: step;
+      width: 20px;
+      line-height: 20px;
+      display: block;
+      font-size: 10px;
+      color: #333;
+      background: white;
+      border-radius: 3px;
+      margin: 0 auto 5px auto;
+    }
+
+    #progressbar li:after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: white;
+      position: absolute;
+      left: -50%;
+      top: 9px;
+      z-index: -1;
+    }
+    #progressbar li:first-child:after {
+      content: none;
+    }
+
+    #progressbar li.active:before,
+    #progressbar li.active:after {
+      background: #d35656;
+      color: white;
+    }
+    select {
+      font-family: montserrat;
+      width: 300px;
+      height: 50px;
+    }
+    label {
+      font-size: 15px;
+      float: left;
+    }
+    #len input {
+      width: 50px;
+    }
+
+    #dis {
+      display: none;
+      width: 100%;
+    }
+
+    #hidden {
+      display: none;
+    }
+    #second {
+      text-align: center;
+    }
+    #second h1 {
+      color: white;
+      padding: 70px 20px 10px 20px;
+      font-family: "Nunito", sans-serif;
+      font-size: 300%;
+    }
+    #second a {
+      text-decoration: none;
+      color: white;
+      padding: 10px;
+      border: solid white 1px;
+      border-radius: 5px;
+      margin: 40%;
+    }
+    #second p {
+      color: white;
+      font-family: "Nunito", sans-serif;
+      font-size: 150%;
+      padding-bottom: 20px;
+    }
+    #second a:hover {
+      color: #2c3e50;
+      background-color: white;
+    }
+  </style>
+  <script>
+    window.console = window.console || function (t) {};
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage("resize", "*");
+    }
+  </script>
+  <body translate="no">
+    <div id="container">
+      <div id="first">
+        <form id="msform" method="POST">
+          {% csrf_token %}
+          <ul id="progressbar">
+            <li class="active">Personal Details</li>
+            <li>Welfare Schemes</li>
+            <li>Account Setup</li>
+          </ul>
+          <fieldset>
+            <h2 class="fs-title">Enter Your Personal Details</h2>
+            <h3 class="fs-subtitle">This is step 1</h3>
+            <!-- <input type="text" name="name" placeholder="Full Name" value=""/>
+	<input type="number" name="number" placeholder="Contact No." />
+	<input type="email" name="mail" placeholder="Email" /> -->
+            <label>Name</label>{{ patientForm.name}}
+            <label>Contact No.</label>{{ patientForm.contact_no}}
+            <!-- <label>Name</label>{{ patientForm.name}} -->
+            <input
+              type="button"
+              name="next"
+              class="next action-button"
+              value="Next"
+            />
+          </fieldset>
+          <fieldset>
+            <h2 class="fs-title">Required Information</h2>
+            <h3 class="fs-subtitle">We will never sell it</h3>
+            <!-- <input type="number" name="age" placeholder="Age" /> -->
+            <label>Age</label>{{ patientForm.age}}
+            <!-- <input type="text" name="phone" placeholder="Phone" /> -->
+            <label>Gender</label>{{ patientForm.gender}}
+            <!-- <textarea name="address" placeholder="Address"></textarea> -->
+            <!-- <label>Address</label>{{ patientForm.address}} -->
+            <label>Occupation</label>
+            <select type="text" name="occupation" placeholder="Occupation">
+              <option selected>Occupation</option>
+              <option>Central Government Employee</option>
+              <option>Brick Kiln Workers</option
+              ><option>Karmacharis</option>
+              <option>Textile Physically Handicapped</option>
+              <option>Beedi Workers</option>
+              <option>Self Employed Persons</option>
+              <option>Food Stuffs like Khandsari / Sugar</option
+              ><option> Construction Workers</option>
+              <option>Carpenters</option>
+              <option>Safai Karamacharis</option>
+              <option>Manufacture of Wood Products</option>
+              <option>Coconut Processors</option>
+              <option>Cobblers</option>
+              <option>Rickshaw Pullers / Auto Drivers</option>
+              <option>Manufacture of Paper Products</option
+              ><option> Sericulture</option>
+              <option>Fishermen</option>
+              <option>Rural Poor</option>
+              <option>Manufacture of Leather Products</option>
+              <option>Primary Milk Producers</option>
+              <option>Hamals</option>
+              <option>Sheep Breeders</option>
+              <option>Printing</option>
+              <option>Hilly Area Women</option>
+              <option>Handicraft Artisans </option
+              ><option>Unorganized workers covered under RSBY</option>
+              <option>Rubber & Coal Products</option>
+              <option>Toddy Tappers</option>
+              <option>Handloom Weavers</option>
+              <option>Women Associated with Self-Help Groups </option
+              ><option>Chemical Products like candle manufacture</option>
+              <option>Rural Landless Households </option
+              ><option>Handloom & Khadi Weavers</option>
+              <option>Overseas Indian Workers </option
+              ><option>Mineral products like earthen toys manufacture</option>
+              <option>Powerloom Workers </option
+              ><option>Lady Tailors</option>
+              <option>Fire Crackers’ Workers</option>
+              <option>Agriculturists</option
+              ><option> Salt Growers</option>
+              <option>Leather & Tannery Workers</option
+              ><option> Aanganwadi Teachers</option>
+              <option>Transport Drivers Association</option
+              ><option> Tendu Leaf Collectors</option>
+              <option>Papad Workers attached to ‘SEWA’ Transport</option
+              ><option> Scheme for the Urban Poor</option>
+              <option>Plantation Workers Forest Workers</option>
+            </select>
+            <label>Social Status</label>
+            {{ patientForm.social_status }}
+            <label>Prefferred Hospital</label>
+            {{ patientForm.prefd_hospital }}
+            <br /><br />
+            <div id="len">
+              <label>Are You Below Poverty Line?</label><br />
+              <input type="radio" name="radio" value="yes" />Yes<br />
+              <input type="radio" name="radio" value="no" />No<br />
+              <label>Do You Own Any Medical Card?</label><br />
+              <input
+                type="radio"
+                name="radioo"
+                value="yes"
+                id="lis1"
+              />Yes<br />
+              <input type="radio" name="radioo" value="no" id="lis2" />No<br />
+              <div id="dis">
+                <label>Select your card:</label><br />
+                <table style="margin-left: 100px;">
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td style="float: left;">CGHS Card</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td style="float: left;">DGHES Card</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td style="float: left;">ESIC Card</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td style="float: left;">ECHS Card</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td style="float: left;">ONGC</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" id="lis3" /></td>
+                    <td style="float: left;">Others</td>
+                  </tr>
+                </table>
+                <input type="text" id="hidden" style="width: 100%;" />
+              </div>
+            </div>
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button"
+              value="Previous"
+            />
+            <input
+              type="button"
+              name="next"
+              class="next action-button"
+              value="Next"
+            />
+          </fieldset>
+          <fieldset>
+            <h2 class="fs-title">Create Your Account</h2>
+            <label>User Id:</label>
+            {{ userForm.user_id }}
+            <!-- <input name="user" placeholder="Username" /> -->
+            <label>Password</label>
+            {{ userForm.password1 }}
+            <!-- <input type="password" name="pass" placeholder="Password" /> -->
+            <label>Confirm Password</label>
+            {{ userForm.password2 }}
+            <!-- <input type="password" name="cpass" placeholder="Confirm Password" /> -->
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button"
+              value="Previous"
+            />
+            <input
+              type="submit"
+              name="submit"
+              class="submit action-button"
+              value="Submit"
+            />
+            <button type="submit">Submit</button>
+          </fieldset>
+        </form>
+      </div>
+      <div id="second">
+        <!-- {% if patientForm.errors %}
+        <div
+          class="alert alert-danger alert-dismissible col-12 mx-1"
+          role="alert"
+        >
+          <div id="form_errors">
+            {% for key, value in patientForm.errors.items %}
+            <span class="fieldWrapper">
+              {{ key }}:{{ value }}
+            </span>
+            {% endfor %}
+          </div>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endif %} -->
+        <h1>Aready A User</h1>
+        <p>Login To Your Account</p>
+        <a href="{% url 'login' %}">SIGN IN</a>
+      </div>
+    </div>
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-9bf952ccbbd13c245169a0a1190323a27ce073a3d304b8c0fdf421ab22794a58.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script id="rendered-js">
+      //jQuery time
+      var current_fs, next_fs, previous_fs; //fieldsets
+      var left, opacity, scale; //fieldset properties which we will animate
+      var animating; //flag to prevent quick multi-click glitches
+
+      $(".next").click(function () {
+        if (animating) return false;
+        animating = true;
+
+        current_fs = $(this).parent();
+        next_fs = $(this).parent().next();
+
+        //activate next step on progressbar using the index of next_fs
+        $("#progressbar li")
+          .eq($("fieldset").index(next_fs))
+          .addClass("active");
+
+        //show the next fieldset
+        next_fs.show();
+        //hide the current fieldset with style
+        current_fs.animate(
+          { opacity: 0 },
+          {
+            step: function (now, mx) {
+              //as the opacity of current_fs reduces to 0 - stored in "now"
+              //1. scale current_fs down to 80%
+              scale = 1 - (1 - now) * 0.2;
+              //2. bring next_fs from the right(50%)
+              left = now * 50 + "%";
+              //3. increase opacity of next_fs to 1 as it moves in
+              opacity = 1 - now;
+              current_fs.css({
+                transform: "scale(" + scale + ")",
+                position: "absolute",
+              });
+
+              next_fs.css({ left: left, opacity: opacity });
+            },
+            duration: 800,
+            complete: function () {
+              current_fs.hide();
+              animating = false;
+            },
+            //this comes from the custom easing plugin
+            easing: "easeInOutBack",
+          }
+        );
+      });
+
+      $(".previous").click(function () {
+        if (animating) return false;
+        animating = true;
+
+        current_fs = $(this).parent();
+        previous_fs = $(this).parent().prev();
+
+        //de-activate current step on progressbar
+        $("#progressbar li")
+          .eq($("fieldset").index(current_fs))
+          .removeClass("active");
+
+        //show the previous fieldset
+        previous_fs.show();
+        //hide the current fieldset with style
+        current_fs.animate(
+          { opacity: 0 },
+          {
+            step: function (now, mx) {
+              //as the opacity of current_fs reduces to 0 - stored in "now"
+              //1. scale previous_fs from 80% to 100%
+              scale = 0.8 + (1 - now) * 0.2;
+              //2. take current_fs to the right(50%) - from 0%
+              left = (1 - now) * 50 + "%";
+              //3. increase opacity of previous_fs to 1 as it moves in
+              opacity = 1 - now;
+              current_fs.css({ left: left });
+              previous_fs.css({
+                transform: "scale(" + scale + ")",
+                opacity: opacity,
+              });
+            },
+            duration: 800,
+            complete: function () {
+              current_fs.hide();
+              animating = false;
+            },
+            //this comes from the custom easing plugin
+            easing: "easeInOutBack",
+          }
+        );
+      });
+
+      $(".submit").click(function () {
+        return false;
+      });
+
+      //# sourceURL=pen.js
+      var x = document.getElementById("dis");
+      document.getElementById("lis1").addEventListener("click", show);
+      document.getElementById("lis2").addEventListener("click", hide);
+      function show() {
+        x.style.display = "block";
+      }
+      function hide() {
+        x.style.display = "none";
+      }
+      var y = document.getElementById("hidden");
+      document.getElementById("lis3").addEventListener("click", show2);
+      function show2() {
+        y.style.display = "block";
+      }
+    </script>
+  </body>
+</html>

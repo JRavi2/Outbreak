@@ -1,0 +1,6 @@
+{% extends 'base.html' %} {% block content %}
+<div style="margin-top: 10%; text-align: center;"><h4>Do you have any more Complaints?</h4>
+    <a href="{% url 'take_symptoms' %}">Yes</a>
+    &nbsp
+    <a href="{% url 'initialize_interview' %}">No</a></div>
+{% endblock %}

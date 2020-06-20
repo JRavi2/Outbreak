@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+<a href="{% url 'home' %}">Profile</a>
+<h3 style="display: inline;">Find Healthcare Facilities</h3>
+<a href="{% url 'search' %}">By Disease</a>
+<a href="{% url 'take_symptoms' %}">By Symptoms</a>
+<a href="#">Healthcare Schemes</a>
+<p>Name: {{User.name}}</p>
+<p>Age: {{User.age}}</p>
+<p>Gender: {{User.gender}}</p>
+<p>Contact No.: {{User.contact_no}}</p>
+<p>Social Status: {{User.social_status}}</p>
+<p>Prefferred Hospital: {{User.prefd_hospital}}</p>
+{% endblock %}

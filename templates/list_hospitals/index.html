@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<table border="1">
+        <tr>
+			<th>Hospital Name</th>
+			<th>Address</th>
+			<th>Distance</th>
+		</tr>
+	{% for hsp in hospitals %}
+	<tr>
+		<td>{{hsp.name}}</td>
+		<td>{{hsp.address}}</td>
+		<td>{{hsp.distance}}Km</td>
+	</tr>
+	{% endfor %}
+</ul>
+</table>
+{%endblock%}
