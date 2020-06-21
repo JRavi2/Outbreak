@@ -3,7 +3,7 @@
 **Outbreak is a platform which has everything you need from Goverment Schemes to Disease Predictors .** 
 
 
-# What makes it unique!
+## What makes it unique!
 
   - ##### A database of almost, 300+ conditions classified in a rudimentary manner by a professional doctor.
   - ##### Each of those ailments are futher classified into 67 departments .
@@ -19,11 +19,10 @@
 Outbreak uses a number of framework to work properly:
 
 * ##### Django 
-* ##### Vue.js
 * ##### JavaScript
-* ##### CSS
-* ##### HTML
-* ##### Sqlite (For preproduction phase)
+* ##### CSS3
+* ##### HTML5
+* ##### Sqlite3 (For preproduction phase)
 
 
 ## How to run 
@@ -44,7 +43,7 @@ $ python3 manage.py runserver
 - ##### **https://www.nlm.nih.gov/**
 - ##### **https://www.nhsinform.scot/**
 
- - ##### **Google Maps API**
+ - ##### **MapBox API**
  - ##### **TomTom Synchronous Matrix API**
- - ##### **ApiMedic**
+ - ##### **Infermedica API**
 
