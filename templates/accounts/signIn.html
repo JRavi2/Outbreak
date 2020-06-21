@@ -112,8 +112,22 @@ box-shadow: 0 0 0 2px white, 0 0 0 3px #f9d5bb ;
             <label>Password</label>
             {{ form.password }}
             <!-- <input type="password" name="password" placeholder="Password" /> -->
-            <button type="submit">Submit</button>
+            <button type="submit" class="submit action-button">Submit</button>
             <!-- <input type="submit" name="next" class="next action-button"/> -->
+        {% if form.errors %}
+        <div
+          class="alert alert-danger alert-dismissible col-12 mx-1"
+          role="alert"
+        >
+          <div id="form_errors">
+            {% for key, value in form.errors.items %}
+            <span class="fieldWrapper">
+              {{ key }}:{{ value }}
+            </span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
         </form>
     </fieldset></div>
 
