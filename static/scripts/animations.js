@@ -10,8 +10,7 @@ $(document).ready(function(){
         }, 500);
         
         $(this).find(".heading").stop().delay(150).animate({
-            top: "20%",
-            left: "20%"
+            top: "30%",
         }, 500);
         
         $(this).find(".docform").stop().delay(150).animate({
@@ -25,8 +24,7 @@ $(document).ready(function(){
         
         $(this).find(".heading").stop().delay(150).animate({
             top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)"
+            // transform: "translate(-50%, -50%)"
         }, 500);
         
         $(this).find(".docform").stop().delay(150).animate({

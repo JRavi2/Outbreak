@@ -1,78 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<!-- <script src="/home/kartik/Desktop/outbreak/static/scripts/animations.js"></script> -->
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script>$(document).ready(function(){
-    var partWidth = $(".part").width();
-    var partHeight = $(".part").width();
-        
-    $(".part").mouseenter(function(){
-        $(this).addClass("active");
-        
-        $('html, body').stop().delay(100).animate({
-            scrollTop: $(this).offset().top
-        }, 500);
-        
-        $(this).find(".heading").stop().delay(150).animate({
-            top: "20%",
-            left: "0%"
-        }, 500);
-        
-        $(this).find(".docform").stop().delay(150).animate({
-            opacity: 1
-        }, 500);
-        
-    });
-    
-    $(".part").mouseleave(function(){
-        $(this).removeClass("active");
-        
-        $(this).find(".heading").stop().delay(150).animate({
-            top: "50%",
-            left: "0%",
-            transform: "translate(-50%, -50%)"
-        }, 500);
-        
-        $(this).find(".docform").stop().delay(150).animate({
-            opacity: 0
-        }, 400);
-    });
-});</script>
+<script src="{% static 'scripts/animations.js' %}"></script>
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6 part" style="background-color: #f66767">
             <div class="row">
-                <div class="col-lg-6 order-first" style="height: 100%; position: absolute; top: 0; right: 0">
+                <div class="col-lg-6 order-first" style="height: 100%; position: absolute; top: 0%; left: 30%;">
                     <h1 class="heading">Find a doc?</h1>
                 </div>
                 <div class="col-lg-6 docform d-flex justify-content-center" >
                     <form method="POST"> {% csrf_token %}
-                        <div class="form-group">
-                            <input type="text" name="disease" class="form-control-lg" id="ailment" placeholder="Type an ailment or speciality">
+                        <div class="form-group mt-3" style="text-align: center;">
+                            <input type="text" name="disease" class="form-control-lg" id="ailment" placeholder="Type an ailment or speciality" style="top: 20%;">
+                            <button type="submit" class="btn btn-dark mt-3">Search</button>
                         </div>
-                        <!-- <div class="form-group">
-                            <input type="text" class="form-control-lg" id="location" placeholder="Enter your location"><br>
-                        </div> -->
-                        <button type="submit" class="btn btn-dark">Search</button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="col-lg-6 part" style="background-color: #f9d5bb">
             <div class="row">
-                <div class="col-lg-6 order-irst"style="height: 100%; position: absolute; top: 0; right: 0">
+                <div class="col-lg-6 order-irst"style="height: 100%; position: absolute; top: 0%; left: 27.5%">
                     <h1 class="heading">Not feeling well?</h1>
                 </div>
                 <div class="col-lg-6 docform d-flex justify-content-center" >
                     <form method="POST"> {% csrf_token %}
-                        <div class="form-group">
-                            <input type="text" name="complaint" class="form-control-lg" id="ailment" placeholder="Type an ailment or speciality">
+                        <div class="form-group mt-0" style="text-align: center;">
+                            <input type="text" name="complaint" class="form-control-lg mt-3" id="ailment" placeholder="Type an ailment or speciality">
+                            <button type="submit" class="btn btn-dark mt-3">Search</button>
                         </div>
-                        <button type="submit" class="btn btn-dark">Search</button>
                     </form>
                 </div>
             </div>
