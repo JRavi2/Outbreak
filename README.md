@@ -29,10 +29,11 @@ Outbreak uses a number of framework to work properly:
 
 **Outbreak requires Django v3+ to run.**
 
-Install the dependencies  start the server.
+Install the dependencies and start the server by running the following commands: 
 
 ```sh
-$ cd outbreak
+$ cd hackjaipur
+$ pip install -r requirements.txt
 $ python3 manage.py runserver 
 ```
 
