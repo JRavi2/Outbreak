@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div style="position: absolute; top: 10%;">
 <h3>Please enter your Info: </h3>
 <form method="post">
     {% csrf_token %}
@@ -10,4 +11,5 @@
     <input type="text" name="sex">
     <button type="submit">Submit</button>
 </form>
+</div>
 {% endblock %}
